@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="new.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="titleImage is-flex">
+            <figure class="image is-48x48">
+                <img class="is-rounded" src="https://media.moddb.com/images/games/1/54/53541/Icon.1.png">
+            </figure>
+            <h1 class="title is-1">Quiz</h1>
+        </div>
+        <hr>
+        <div class="section">
+        <div class="drop">
+            <div class="drop1">
+                <p class = "name1">Category</p>
+                <select style="font-size: 17px" class="form-control" name="choice" id="firstDrop"
+                    onchange="getOption1() ">
+                    <option value="18">Computers</option>
+                    <option value="9">General Knolwedge</option>
+                    <option value="15">Video Games</option>
+                    <option value="32">Cartoon and Animations</option>
+                    <option value="17">Science and Nature</option>
+                    <option value="31">Anime and Manga</option>
+                </select>
+            </div>
+            <div class="drop2">
+                <p class = "name2">Difficulty</p>
+                <select style="font-size: 17px" class="form-control" name="choice" id="secondDrop"
+                    onchange="getOption2()">
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+        </div>
+        <div id="startButtonDiv">
+            <div class="buttons">
+                <button id="startButton" class="button is-info is-rounded is-medium">Play</button>
+            </div>
+        </div>
+    </div>
+        <progress class="progress is-small" value="0" max="100" style="display: none"></progress>
+        <p id="timeCountDown" class="time" style = "display: none"></p>
+    </div>
+    <div class="resultBtn" style="display: none">
+        <p class="scoreBoard"></p>
+        <button id="resultButton" class="button is-success is-rounded is-medium">See Results</button>
+    </div>
+    <div class="footerDiv">
+        <footer class="footer">
+            <div class="content has-text-centered">
+                <p>
+                    Designed by <span class="tag is-success is-light">Maithreya Pola</span>
+                </p>
+            </div>
+        </footer>
+    </div>
+    <script src="new.js"></script>
+</body>
+
+</html>
