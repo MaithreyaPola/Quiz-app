@@ -28,27 +28,22 @@ let progressValue = progress.value;
 
 function getOption1() {
   firstDropdown = firstDrop.value;
-  console.log(firstDropdown);
 }
 
 function getOption2() {
   secondDropdown = secondDrop.value;
-  console.log(secondDropdown);
 }
 
 const generateQuestions = async () => {
-  console.log(firstDropdown, secondDropdown);
   const res = await fetch(
     `https://opentdb.com/api.php?amount=10&category=${firstDropdown}&difficulty=${secondDropdown}&type=multiple`
   );
   const data = await res.json();
-  console.log(data.results);
   data.results.forEach((ques) => {
     const inc = ques.incorrect_answers;
     const c = ques.correct_answer;
     const options = [...inc, c];
 
-    // Fisher-Yates shuffle algorithm
     for (let i = options.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [options[i], options[j]] = [options[j], options[i]];
@@ -62,15 +57,14 @@ const generateQuestions = async () => {
 const createQuestion = (questionObject, questionDiv) => {
   questionDiv.innerHTML = "";
   const paragraph = document.createElement("p");
-  // paragraph.textContent = questionNumber;
-  paragraph.textContent = `${questionNumber})    ${questionObject.question}`;
+  paragraph.innerHTML = `${questionNumber})    ${questionObject.question}`;
   questionDiv.append(paragraph);
   questionDiv.appendChild(newLine);
   questionDiv.appendChild(newLine);
 
   Object.keys(questionObject.options).forEach((optionKey) => {
     const button = document.createElement("button");
-    button.textContent = questionObject.options[optionKey];
+    button.innerHTML = questionObject.options[optionKey];
     setAttributes(button, {
       type: "button",
       id: optionKey,
@@ -90,8 +84,6 @@ startButton.addEventListener("click", async () => {
   countDown.style.display = "table";
   progress.style.display = "block";
   section.style.display = "none";
-  // drop.style.display = "none";
-  // const form = document.createElement("form");
   const questionDiv = document.createElement("div");
   const buttonDiv = document.createElement("div");
   setAttributes(questionDiv, {
@@ -119,13 +111,10 @@ startButton.addEventListener("click", async () => {
   });
   buttonDiv.appendChild(nextButton);
   buttonDiv.appendChild(submitButton);
-  // form.appendChild(questionDiv);
   document.body.append(questionDiv, buttonDiv);
-  // startButtonDiv.style.display = "none";
   submitButton.style.display = "none";
 
   nextButton.addEventListener("click", () => {
-    // questionDiv.style.display = "none";
     const selectedButton1 = document.querySelector(".questionButton.selected");
     if (!selectedButton1) {
       alert("Please select an option");
@@ -153,15 +142,12 @@ startButton.addEventListener("click", async () => {
       submitButton.style.display = "block";
       nextButton.style.display = "none";
     }
-    // console.log(questionIndex);
-    // checkAnswer();
   });
   submitButton.addEventListener("click", () => {
     submitButton.style.display = "none";
     questionDiv.style.display = "none";
     footerDiv.style.display = "none";
     scoreBoard.textContent = `Total Score is: ${totalScores}`;
-    // answerDiv.appendChild(overallScore);
     answerDiv.style.display = "none";
     resultBtnDiv.style.display = "block";
   });
@@ -199,12 +185,10 @@ function checkAnswer() {
     totalScores += 1;
     const questionMessage = document.createElement("p");
     const resultMessage = document.createElement("p");
-    resultMessage.textContent = `correct answer is: ${content[questionIndex].correct_answer}`; // correct
-    questionMessage.textContent = `${questionIndex + 1})  ${
+    resultMessage.innerHTML = `correct answer is: ${content[questionIndex].correct_answer}`; // correct
+    questionMessage.innerHTML = `${questionIndex + 1})  ${
       content[questionIndex].question
     }`;
-    // console.log(content[questionIndex].question);
-    // selectedButton.classList.add("is-success", "is-light");
     answerDiv.appendChild(questionMessage);
     answerDiv.appendChild(resultMessage);
     answerDiv.appendChild(newLine2);
@@ -215,10 +199,8 @@ function checkAnswer() {
   }
   const questionMessage = document.createElement("p");
   const resultMessage = document.createElement("p");
-  resultMessage.textContent = `Selected answer = ${selectedButton.innerText} and correct answer = ${content[questionIndex].correct_answer}`; //wrong
-  // console.log(content[questionIndex].question);
-  // selectedButton.classList.add("is-danger", "is-light");
-  questionMessage.textContent = `${questionIndex + 1})  ${
+  resultMessage.innerHTML = `Selected answer = ${selectedButton.innerText} and correct answer = ${content[questionIndex].correct_answer}`; //wrong
+  questionMessage.innerHTML = `${questionIndex + 1})  ${
     content[questionIndex].question
   }`;
   answerDiv.appendChild(questionMessage);
@@ -242,7 +224,6 @@ const startCountDown = () => {
       clearInterval(quizTimer);
       document.querySelector("#questionDiv").style.display = "none";
       document.querySelector("#nextButton").style.display = "none";
-      // answerDiv.style.display = "block";
       countDown.style.display = "none";
       footerDiv.style.display = "none";
       scoreBoard.textContent = `Total Score is: ${totalScores}`;

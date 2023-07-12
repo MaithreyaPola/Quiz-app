@@ -16,37 +16,37 @@
         </div>
         <hr>
         <div class="section">
-        <div class="drop">
-            <div class="drop1">
-                <p class = "name1">Category</p>
-                <select style="font-size: 17px" class="form-control" name="choice" id="firstDrop"
-                    onchange="getOption1() ">
-                    <option value="18">Computers</option>
-                    <option value="9">General Knolwedge</option>
-                    <option value="15">Video Games</option>
-                    <option value="32">Cartoon and Animations</option>
-                    <option value="17">Science and Nature</option>
-                    <option value="31">Anime and Manga</option>
-                </select>
+            <div class="drop">
+                <div class="drop1">
+                    <p class="name1">Category</p>
+                    <select style="font-size: 17px" class="form-control" name="choice" id="firstDrop"
+                        onchange="getOption1() ">
+                        <option value="18">Computers</option>
+                        <option value="9">General Knolwedge</option>
+                        <option value="15">Video Games</option>
+                        <option value="32">Cartoon and Animations</option>
+                        <option value="17">Science and Nature</option>
+                        <option value="31">Anime and Manga</option>
+                    </select>
+                </div>
+                <div class="drop2">
+                    <p class="name2">Difficulty</p>
+                    <select style="font-size: 17px" class="form-control" name="choice" id="secondDrop"
+                        onchange="getOption2()">
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                </div>
             </div>
-            <div class="drop2">
-                <p class = "name2">Difficulty</p>
-                <select style="font-size: 17px" class="form-control" name="choice" id="secondDrop"
-                    onchange="getOption2()">
-                    <option value="easy">Easy</option>
-                    <option value="medium">Medium</option>
-                    <option value="hard">Hard</option>
-                </select>
+            <div id="startButtonDiv">
+                <div class="buttons">
+                    <button id="startButton" class="button is-info is-rounded is-medium">Play</button>
+                </div>
             </div>
         </div>
-        <div id="startButtonDiv">
-            <div class="buttons">
-                <button id="startButton" class="button is-info is-rounded is-medium">Play</button>
-            </div>
-        </div>
-    </div>
         <progress class="progress is-small" value="0" max="100" style="display: none"></progress>
-        <p id="timeCountDown" class="time" style = "display: none"></p>
+        <p id="timeCountDown" class="time" style="display: none"></p>
     </div>
     <div class="resultBtn" style="display: none">
         <p class="scoreBoard"></p>
